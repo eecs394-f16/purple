@@ -2,8 +2,25 @@
   "name": "wall",
   "version": "0.0.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.14.0"
+  },
   "devDependencies": {
     "grunt-steroids": "1.x"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "TEAM PURPLE: WALL",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eecs394-f16/purple.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eecs394-f16/purple/issues"
+  },
+  "homepage": "https://github.com/eecs394-f16/purple#readme"
 }

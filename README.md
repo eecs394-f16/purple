@@ -4,5 +4,4 @@ About: A virtual location-specific billboard, meant for sharing content and mome
 
 Team Members (edit here):
 
-Matthew Zhang
-Fahad Khan
+Matthew Zhang, Fahad Khan, James Willis, Lenny Kim

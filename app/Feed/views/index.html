@@ -5,8 +5,10 @@
 
     </super-navbar-title>
   </super-navbar>
-  <button class="button button-block button-positive" ng-click="getContent()">Get content</button>
+
   <div class='list-group'>
-    <div ng-repeat="name in contents" href="#" class="list-group-item">{{name}}</div>
+    <div ng-repeat="name in contents" class="post text-center">
+    	{{name}}
+    </div>
   </div>
 </div>

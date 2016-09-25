@@ -1,9 +1,3 @@
-angular
-  .module('Feed', [
-  	'common']
-
-  );
-
 window.onload = function() {
   var content = ['abc', '123', 'strings galore']
 

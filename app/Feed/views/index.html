@@ -1,12 +1,12 @@
 <div ng-controller="IndexController">
 
   <super-navbar>
-    <super-navbar-title ng-bind = "name">
+    <super-navbar-title ng-bind = "curr_loc">
 
     </super-navbar-title>
   </super-navbar>
-
-  <div class="container-fluid">
-    <p ng-bind="contents"></p>
+  <button class="button button-block button-positive" ng-click="getContent()">Get content</button>
+  <div class='list-group'>
+    <div ng-repeat="name in contents" href="#" class="list-group-item">{{name}}</div>
   </div>
 </div>

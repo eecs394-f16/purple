@@ -7,12 +7,17 @@ module.exports =
     {
       title: "Feed"
       id: "index"
-      location: "location#index" # Supersonic module#view type navigation
+      location: "example#getting-started" # Supersonic module#view type navigation
     }
     {
       title: "Geolocation"
       id: "geolocation"
       location: "geolocation#index"
+    }
+    {
+      title: "Location"
+      id: "location"
+      location: "location#index"
     }
   ]
 

@@ -6,8 +6,8 @@ module.exports =
   tabs: [
     {
       title: "Feed"
-      id: "index"
-      location: "example#getting-started" # Supersonic module#view type navigation
+      id: "Feed"
+      location: "Feed#index" # Supersonic module#view type navigation
     }
     {
       title: "Location"

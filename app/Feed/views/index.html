@@ -1,0 +1,14 @@
+<div ng-controller="IndexController">
+
+  <super-navbar>
+    <super-navbar-title ng-bind = "curr_loc">
+
+    </super-navbar-title>
+  </super-navbar>
+
+  <div class='list-group'>
+    <div ng-repeat="name in contents" class="post text-center">
+    	{{name}}
+    </div>
+  </div>
+</div>

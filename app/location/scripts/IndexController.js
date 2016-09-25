@@ -4,6 +4,11 @@ angular
     $scope.locations = null;
     $scope.showSpinner = true;
 
+
+    supersonic.device.geolocation.getPosition().then( function(position){
+          $scope.position = position;
+        });
+    
     Location.all().whenChanged( function (locations) {
         $scope.$apply( function () {
           $scope.locations = locations;

@@ -14,28 +14,27 @@ angular
   firebase.initializeApp(config);
   var database = firebase.database();
 
+  function saveData(name, long, lat) {
+    firebase.database().ref('/location/' + name).set({
+      longitude: long,
+      langitude: lat
+    })
+  }
+
   var locations;
+
   firebase.database().ref('/location').once('value').then(function(snapshot) {
     locations = snapshot.val();
   });
 
+  // Controller functionality here
+	$scope.position = undefined;
 
-
-  $scope.position = undefined;
-  $scope.nearestLocation = undefined;
-
-
-
-  supersonic.device.geolocation.getPosition().then( function(position){
-        $scope.position = position;
-      });
-
-
-  function findNearestLocation(){
-      //Needs to be filled in
-  }
-
-
-
+	$scope.getPosition = function() {
+	  supersonic.device.geolocation.getPosition().then( function(position){
+	    $scope.position = position;
+      supersonic.logger.log(locations);
+	  });
+	};
 
   });

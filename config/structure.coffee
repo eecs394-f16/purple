@@ -10,9 +10,9 @@ module.exports =
       location: "Feed#index" # Supersonic module#view type navigation
     }
     {
-      title: "Geolocation"
-      id: "geolocation"
-      location: "geolocation#index"
+      title: "Location"
+      id: "location"
+      location: "location#index"
     }
   ]
 

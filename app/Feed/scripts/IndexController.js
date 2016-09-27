@@ -70,7 +70,7 @@ angular
 
     getPosition();
     getAllData();
-    
-    $interval(getPosition, 5000);
-  	$interval(getAllData, 5000);
+
+    $interval(getPosition, 10000);
+  	$interval(getAllData, 10000);
 });

@@ -4,7 +4,7 @@
  ***********************************************************/
 
 navigation-bar {
-  background-color: #00B5FF;
+  background-color: #22b37d;
   color: #ffffff;
 }
 
@@ -31,17 +31,17 @@ tab-bar tab-bar-item {
 }
 
 tab-bar tab-bar-item:selected {
-  color: #1596f7;
+  color: #22b37d;
 }
 
-tab-bar-item#settings {
-  background-image: url(icons/cog.svg);
-}
-
-tab-bar-item#index {
+tab-bar-item#Feed {
   background-image: url(icons/home.svg);
 }
 
-tab-bar-item#internet {
+tab-bar-item#geolocation {
   background-image: url(icons/search.svg);
+}
+
+tab-bar-item#location {
+  background-image: url(icons/cog.svg);
 }

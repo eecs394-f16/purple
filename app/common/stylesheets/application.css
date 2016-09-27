@@ -1,10 +1,11 @@
 .supersonic-navbar-mock {
-  background-color: #00B5FF !important;
+  background-color: #22b37d !important;
   text-align: center;
   font-weight: 600;
 }
 
 .post {
-	padding-top: 45px;
-	padding-bottom: 45px;
+	padding-top: 95px;
+	padding-bottom: 95px;
+	border-bottom: 1px solid #CCCCCC;
 }

@@ -14,15 +14,7 @@ angular
   firebase.initializeApp(config);
   var database = firebase.database();
 
-  function saveData(name, long, lat) {
-    firebase.database().ref('/location/' + name).set({
-      longitude: long,
-      langitude: lat
-    })
-  }
-
-  var locations;
-
+  function saveData(name, long, l1
   firebase.database().ref('/location').once('value').then(function(snapshot) {
     locations = snapshot.val();
   });

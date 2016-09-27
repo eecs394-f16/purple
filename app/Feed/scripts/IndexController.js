@@ -13,27 +13,11 @@ angular
     $scope.curr_loc = 'No nearby wall';
     $scope.contents = undefined;
     $scope.position = undefined;
+    $scope.test = undefined;
     firebase.initializeApp(config);
     var database = firebase.database();
 
-    var findNearestLocation = function(obj) {
-      var myLat = $scope.position.coords.latitude;
-      var myLong = $scope.position.coords.longitude;
-      var nearestLocation = '';
-      var nearestLocationDistance = INF;
-      supersonic.logger.log(obj);
-      for (item in obj['location']) {
-       var lat = item['latitude'];
-       var long = item['longitude'];
-       var dist = distance(myLat, myLong, lat, long);
-       if (dist < nearestLocationDistance) {
-         nearestLocation = item;
-         nearestLocationDistance = dist;
-        }
-      }
-      return nearestLocation;
-    };
-
+//Needs fixing
     var distance = function(lat1, long1, lat2, long2) {
       var R = 6371e3; // radius of Earth, meters
       var φ1 = lat1 * Math.PI/180.;
@@ -63,18 +47,30 @@ angular
       database.ref('/location').once('value').then(function(snapshot) {
         locations = snapshot.val();
         supersonic.logger.log(locations);
-        //find_nearest_location
-        var data = findNearestLocation(locations);
-        $scope.curr_loc = Object.keys(data)[0];
-        $scope.contents = locations[$scope.curr_loc]["content"];
         
+        var myLat = $scope.position.coords.latitude;
+        var myLong = $scope.position.coords.longitude;
+        var dist = Number.MAX_VALUE;
+
+        for (item in locations) {
+          var lat = locations[item]["latitude"];
+          var longs = locations[item]["longitude"];
+          var temp_dist = Math.abs(lat-myLat);
+
+          if (temp_dist < dist) {
+            $scope.curr_loc = item;
+            dist = temp_dist;
+            $scope.contents = locations[$scope.curr_loc]["content"];
+          }
+        }
+
       });
       
     };
 
     getPosition();
     getAllData();
-    //getContent();
+    
     $interval(getPosition, 5000);
   	$interval(getAllData, 5000);
 });

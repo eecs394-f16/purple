@@ -2,19 +2,34 @@
 
   <super-navbar>
     <super-navbar-title>
-      Index
+    	Location Index
     </super-navbar-title>
   </super-navbar>
 
-<!--
-  <button class="button button-block button-positive" ng-click="getPosition()">Get position</button>
+  <div class="content">
+
+  <h3> Current Longitude/Latitude: </h3>
+  <p> ( {{position.coords.longitude}} , {{position.coords.latitude}} ) </p>
 
 
-<ul class="list" ng-show="position">
-  <li class="item">Latitude: {{position.coords.latitude}}</li>
-  <li class="item">Longitude: {{position.coords.longitude}}</li>
-  <li class="item">Time: {{position.timestamp}}</li>
-</ul>
--->
+  <h3> Nearest Location: </h3>
+  <p> {{curr_loc}} </p>
+
+  <h3> List of all locations:</h3>
+
+  <div class='list-group'>
+    <div ng-repeat="location in locations">
+    	<h4> Location: {{location[0]}} </h4>
+    	<p> Longitude: {{location[1]}} </p>
+    	<p> Latitude: {{location[2]}} </p>
+    </div>
+  </div>
+
+  <button class="button button-full button-positive">
+      Create a new location (not functional)
+   </button>
+
+
+  </div>
 
 </div>

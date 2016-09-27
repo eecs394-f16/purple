@@ -14,15 +14,10 @@ module.exports =
       id: "geolocation"
       location: "geolocation#index"
     }
-    {
-      title: "Location"
-      id: "location"
-      location: "location#index"
-    }
   ]
 
   # rootView:
-  #   location: "example#getting-started"
+  #   location: "Feed#index"
 
   preloads: [
     {

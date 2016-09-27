@@ -2,14 +2,35 @@ angular
   .module('Feed')
   .controller('IndexController', function($scope, $interval, supersonic) {
     // Controller functionality here
-  	$scope.curr_loc = 'No nearby wall';
+  	// Firebase Setting
+    var config = {
+        apiKey: "AIzaSyDAuhBy07kgbtxrkWjHu76bS7-Rvsr2Oo8",
+        authDomain: "purple-b06c8.firebaseapp.com",
+        databaseURL: "https://purple-b06c8.firebaseio.com",
+        storageBucket: "purple-b06c8.appspot.com",
+        messagingSenderId: "396973912921"
+      };
+    $scope.curr_loc = 'No nearby wall';
     $scope.contents = undefined;
+    firebase.initializeApp(config);
+    var database = firebase.database();
 
-    var getContent = function() {
-      $scope.curr_loc = 'Tech';
-      $scope.contents = ['Memory 1', 'Memory 2', 'Memory 3', 'Memory 4'];
-  	};
-  	getContent();
+    var getAllData = function() {
+      
+      var locations;
 
-  	$interval(getContent, 5000);
+      database.ref('/location').once('value').then(function(snapshot) {
+        locations = snapshot.val();
+        supersonic.logger.log(locations);
+        //find_nearest_location
+        $scope.curr_loc = 'Tech';
+        $scope.contents = locations[$scope.curr_loc]["content"];
+        
+      });
+      
+    };
+
+    getAllData();
+    //getContent();
+  	$interval(getAllData, 5000);
 });

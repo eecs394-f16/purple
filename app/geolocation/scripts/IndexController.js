@@ -1,7 +1,7 @@
 angular
   .module('geolocation')
   .controller('IndexController', function($scope, supersonic) {
-
+/*
   // Firebase Setting
   var config = {
         apiKey: "AIzaSyDAuhBy07kgbtxrkWjHu76bS7-Rvsr2Oo8",
@@ -36,5 +36,5 @@ angular
       supersonic.logger.log(locations);
 	  });
 	};
-
+*/
   });

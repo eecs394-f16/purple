@@ -36,26 +36,25 @@ angular
     var getPosition = function() {
       supersonic.device.geolocation.getPosition().then( function(position){
         $scope.position = position;
-        supersonic.logger.log(locations);
       });
     };
 
     var getAllData = function() {
-      
+
       var locations;
 
       database.ref('/location').once('value').then(function(snapshot) {
-        locations = snapshot.val();
-        supersonic.logger.log(locations);
-        
+        locations = snapshot.val();miller1959
+
+
         var myLat = $scope.position.coords.latitude;
         var myLong = $scope.position.coords.longitude;
-        var dist = Number.MAX_VALUE;
+        var dist = Number.POSITIVE_INFINITY;
 
-        for (item in locations) {
+        for (var item in locations) {
           var lat = locations[item]["latitude"];
-          var longs = locations[item]["longitude"];
-          var temp_dist = Math.abs(lat-myLat);
+          var long = locations[item]["longitude"];
+          var temp_dist = distance(lat, long, myLat, myLong);
 
           if (temp_dist < dist) {
             $scope.curr_loc = item;
@@ -65,7 +64,7 @@ angular
         }
 
       });
-      
+
     };
 
     getPosition();

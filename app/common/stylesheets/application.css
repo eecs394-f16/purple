@@ -9,6 +9,11 @@
 	padding-bottom: 10px;
 }
 
+.caption {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
 .content{
 	padding: 5%;
 }

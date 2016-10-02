@@ -4,6 +4,10 @@
     <super-navbar-title ng-bind = "curr_loc"></super-navbar-title>
   </super-navbar>
 
+  <super-navigate location="Feed#detail">
+    <button class="button button-block button-positive icon-left super-wand">Go to detail page</button>
+  </super-navigate>
+
   <div class='list-group'>
     <div ng-repeat="content in contents" class="post">
       <img ng-src={{content[0]}} width="100%" height="100%" />

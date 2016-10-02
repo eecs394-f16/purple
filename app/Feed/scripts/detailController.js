@@ -1,5 +1,8 @@
 angular
   .module('Feed')
-  .controller('detailController', function($scope, supersonic) {
+  .controller('DetailController', function($scope, supersonic) {
     // some code
+    $scope.temporary = "hi this is detail page"
+    
+
   });

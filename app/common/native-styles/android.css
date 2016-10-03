@@ -2,9 +2,8 @@
  * These styles apply for native components on Android.
  * Read more about native styles at http://docs.appgyver.com
  ***********************************************************/
-
 navigation-bar {
-  background-color: #22b37d;
+  background-color: #f4511e;
   color: #ffffff;
   padding-left: 6px;
   padding-right: 6px;
@@ -49,7 +48,7 @@ tab-bar tab-bar-item {
 }
 
 tab-bar tab-bar-item:selected {
-  color: #22b37d;
+  color: #f4511e;
 }
 
 tab-bar divider {
@@ -57,7 +56,7 @@ tab-bar divider {
 }
 
 tab-bar tab-bar-item marker-top:selected {
-  background-color: #22b37d;
+  background-color: #f4511e;
 }
 
 tab-bar-item#Feed {

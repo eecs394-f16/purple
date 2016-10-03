@@ -2,9 +2,8 @@
  * These styles apply for native components on iOS.
  * Read more about native styles at http://docs.appgyver.com
  ***********************************************************/
-
 navigation-bar {
-  background-color: #22b37d;
+  background-color: #f4511e;
   color: #ffffff;
 }
 
@@ -31,7 +30,7 @@ tab-bar tab-bar-item {
 }
 
 tab-bar tab-bar-item:selected {
-  color: #22b37d;
+  color: #f4511e;
 }
 
 tab-bar-item#Feed {

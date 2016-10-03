@@ -40,10 +40,13 @@ var setNearestLocation = function(locations, myLat, myLong) {
   return feed;
 };
 
+function convertTimestamp(num) {
+  // some code
+}
+
 angular
   .module('Feed')
   .controller('IndexController', function($scope, $interval, supersonic) {
-    // Controller functionality here
   	// Firebase Setting
     var config = {
         apiKey: "AIzaSyDAuhBy07kgbtxrkWjHu76bS7-Rvsr2Oo8",
@@ -57,8 +60,63 @@ angular
     $scope.contents = undefined;
     $scope.position = undefined;
     $scope.test = undefined;
+
+
     firebase.initializeApp(config);
     var database = firebase.database();
+
+    $scope.sendData = function() {
+      var id = this.content.id;
+      supersonic.logger.log("Inside sendData: " + id);
+      database.ref('/location/' + $scope.curr_loc + '/content/' + id).once('value').then(function(snapshot) {
+        var data = snapshot.val();
+        supersonic.logger.log("is this working?");
+        supersonic.logger.log(data);
+        $scope.detail = data;
+      });
+    };
+
+    // Initial Database Setting
+    database.ref('location/' + 'Foster-Walker').set({
+      latitude: -42.05295,
+      longitude: -87.672645
+    });
+
+    var postData1 = [
+      "http://i.imgur.com/mv9n9vX.jpg",
+      "Screening room's marathoning every season of Gossip Girl: BEST NIGHT EVER!",
+      "Room 306"
+    ];
+    var postData2 = [
+      "http://i.imgur.com/EwpVDKq.gif",
+      "We are dancing like this dude",
+      "Room 404"
+    ];
+    var postData3 = [
+      "http://i.imgur.com/h1Sy3z6.jpg",
+      "Come celebrate Lenny's birthday!",
+      "Room 201"
+    ];
+    var postData4 = [
+      "http://i.imgur.com/Srx2uhN.jpg",
+      "Listen to some jazz played by us!",
+      "Basement"
+    ];
+    var postData5 = [
+      "http://i.imgur.com/Jc3yOMw.jpg",
+      "hang out some real DJs in the basement",
+      "Basement 101"
+    ];
+
+    var finalData = [postData1, postData2, postData3, postData4, postData5];
+
+    var ref = database.ref().child('location/Foster-Walker/content');
+    for (var i = 0 ; i < finalData.length; i++) {
+      var timestamp = firebase.database.ServerValue.TIMESTAMP;
+      // finalData[i].timestamp = convertTimestamp(timestamp);
+      finalData[i].timestamp = timestamp;
+      ref.push(finalData[i]);
+    }
 
     var getPosition = function() {
       supersonic.device.geolocation.getPosition().then( function(position){
@@ -74,6 +132,7 @@ angular
         locations = snapshot.val();
         $scope.locations = locations;
 
+
         var keys = [];
         for(var k in locations) {
           keys.push([ k, locations[k]["longitude"], locations[k]["latitude"] ]);
@@ -82,10 +141,27 @@ angular
 
         var content = setNearestLocation(locations,
           $scope.position.coords.latitude,
-          $scope.position.coords.longitude);
+          $scope.position.coords.longitude
+        );
 
         $scope.curr_loc = content[0];
-        $scope.contents = content[1];
+
+        /*
+          object with timestamp key
+          timestamp
+            array
+              0: url
+              1: text
+              2: location
+        */
+        var contents = content[1];
+        var contents_array = [];
+        for (var content in contents) {
+          // supersonic.logger.log(contents[content]);
+          contents[content].id = content;
+          contents_array.push(contents[content]);
+        }
+        $scope.contents = contents_array;
       });
 
     };

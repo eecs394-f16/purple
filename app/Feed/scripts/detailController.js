@@ -1,8 +1,8 @@
 angular
   .module('Feed')
   .controller('DetailController', function($scope, supersonic) {
-    // some code
-    $scope.temporary = "hi this is detail page"
-    
+    // $scope.id = data;
+    // $scope.location = "Room 304";
+    // $scope.attendence = ["Lenny Kim", "Steve", "Fahad", "Matthew", "James"];
 
   });

@@ -1,14 +1,14 @@
 <super-navbar>
-  <super-navbar-title>
-    Detail Page
-  </super-navbar-title>
+  <super-navbar-title ng-bind = "curr_loc"></super-navbar-title>
 </super-navbar>
 
 <!-- Render Properly! -->
 
-<div class="padding" ng-controller="DetailController">
-
-  <p>{{temporary}}</p>
-
-
+<div class="padding" ng-controller="IndexController">
+  <h3>Location: {{detail[2]}}</h3>
+  <h3>Who's participating</h3>
+    <p>Lenny</p>
+    <p>Fahad</p>
+    <p>James</p>
+    <p>Matt</p>
 </div>

@@ -68,11 +68,13 @@ angular
     $scope.sendData = function() {
       var id = this.content.id;
       supersonic.logger.log("Inside sendData: " + id);
+      supersonic.logger.log("Current Location: " + $scope.curr_loc);
       database.ref('/location/' + $scope.curr_loc + '/content/' + id).once('value').then(function(snapshot) {
         var data = snapshot.val();
         supersonic.logger.log("is this working?");
         supersonic.logger.log(data);
-        $scope.detail = data;
+        // $scope.detail = data;
+        supersonic.data.channel('events').publish(data);
       });
     };
 

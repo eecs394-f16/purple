@@ -86,6 +86,8 @@ angular
 
         $scope.curr_loc = content[0];
         $scope.contents = content[1];
+
+        // [NEAREST-LOC, [ARRAY-CONTENTS-AT-LOC]]
       });
 
     };

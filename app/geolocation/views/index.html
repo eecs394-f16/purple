@@ -43,18 +43,28 @@
 
           var fosterWalker = {lat: 42.052911, lng: -87.678638};
           var tech = {lat: 42.058542, lng: -87.675819};
+          var willard = {lat: 42.058542, lng: -87.675819};
+          var norris = {lat: 42.051566, lng: -87.6781407};
           //var myPos = {lat: {{position.coords.latitude}}, lng: {{position.coords.longitude}}};
 
           var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: fosterWalker
           });
-          var PlexMarker = new google.maps.Marker({
+          var plexMarker = new google.maps.Marker({
             position: fosterWalker,
             map: map
           });
-          var TechMarker = new google.maps.Marker({
+          var techMarker = new google.maps.Marker({
             position: tech,
+            map: map
+          });
+          var willardMarker = new google.maps.Marker({
+            position: willard,
+            map: map
+          });
+          var norrisMarker = new google.maps.Marker({
+            position: norris,
             map: map
           });
 
@@ -85,7 +95,7 @@
             handleLocationError(false, infoWindow, map.getCenter());
           }
 
-          
+
 
           function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             infoWindow.setPosition(pos);

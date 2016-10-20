@@ -41,6 +41,10 @@ var config = {
       return d;
     };
 
+    $scope.pushData = function() {
+      var ref = database.ref().child('location/' + $scope.curr_loc + '/content');
+      ref.push("temporary data");
+    }
 
     var setNearestLocation = function(locations, myLat, myLong) {
       var dist = Number.MAX_VALUE;

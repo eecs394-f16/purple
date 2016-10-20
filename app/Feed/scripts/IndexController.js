@@ -90,6 +90,26 @@ angular
 
     };
 
+        $scope.pushData = function() {
+      var ref = database.ref().child('location/' + $scope.curr_loc + '/content');
+        $scope.post = {
+          imageurl: '',
+          caption: '',
+          room: ''
+        };
+        
+      var postData = [
+       $scope.post.imageurl,
+       $scope.post.caption,
+       $scope.post.room
+     ];
+
+
+      ref.push(postData);
+
+
+    }
+
     getPosition();
     getAllData();
 

@@ -44,6 +44,12 @@ var config = {
     $scope.pushData = function() {
       var ref = database.ref().child('location/' + $scope.curr_loc + '/content');
       ref.push("temporary data");
+        $scope.post = {
+          imageurl: '',
+          caption: '',
+          room: ''
+        };
+
     }
 
     var setNearestLocation = function(locations, myLat, myLong) {

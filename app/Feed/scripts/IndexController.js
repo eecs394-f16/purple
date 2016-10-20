@@ -57,6 +57,7 @@ angular
     $scope.contents = undefined;
     $scope.position = undefined;
     $scope.test = undefined;
+    $scope.show_val = false;
     firebase.initializeApp(config);
     var database = firebase.database();
 
@@ -87,6 +88,13 @@ angular
         $scope.curr_loc = content[0];
         $scope.contents = content[1];
       });
+
+    };
+
+    $scope.showPost = function() {
+
+      $scope.show_val = !$scope.show_val;
+      window.scrollTo(0, 0);
 
     };
 

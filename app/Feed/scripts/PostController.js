@@ -42,9 +42,9 @@ var setNearestLocation = function(locations, myLat, myLong) {
 
 angular
   .module('Feed')
-  .controller('IndexController', function($scope, $interval, supersonic) {
+  .controller('PostController', function($scope, $interval, supersonic) {
     // Controller functionality here
-  	// Firebase Setting
+    // Firebase Setting
     var config = {
         apiKey: "AIzaSyDAuhBy07kgbtxrkWjHu76bS7-Rvsr2Oo8",
         authDomain: "purple-b06c8.firebaseapp.com",
@@ -53,17 +53,16 @@ angular
         messagingSenderId: "396973912921"
       };
 
-    $scope.curr_loc = 'No nearby wall';
-    $scope.contents = undefined;
-    $scope.position = undefined;
-    $scope.test = undefined;
-    $scope.show_val = false;
+    $scope.curr_loc_post = 'No nearby wall';
+    $scope.contents_post = undefined;
+    $scope.position_post = undefined;
+    $scope.test_post = undefined;
     firebase.initializeApp(config);
-    var database = firebase.database();
+    var database1 = firebase.database();
 
     var getPosition = function() {
       supersonic.device.geolocation.getPosition().then( function(position){
-        $scope.position = position;
+        $scope.position_post = position;
       });
     };
 
@@ -71,44 +70,42 @@ angular
 
       var locations;
 
-      database.ref('/location').once('value').then(function(snapshot) {
+      database1.ref('/location').once('value').then(function(snapshot) {
         locations = snapshot.val();
-        $scope.locations = locations;
+        $scope.locations_post = locations;
+
+
 
         var keys = [];
         for(var k in locations) {
           keys.push([ k, locations[k]["longitude"], locations[k]["latitude"] ]);
         }
-        $scope.locations = keys;
+        $scope.locations_post = keys;
+
+
 
         var content = setNearestLocation(locations,
-          $scope.position.coords.latitude,
-          $scope.position.coords.longitude);
+          $scope.position_post.coords.latitude,
+          $scope.position_post.coords.longitude);
 
-        $scope.curr_loc = content[0];
-        $scope.contents = content[1];
+        $scope.curr_loc_post = content[0];
+
+
+        $scope.contents_post = content[1];
       });
 
-    };
+      var loc = $scope.curr_loc_post;
 
+      supersonic.logger.log(loc);
 
-
-    $scope.imageurl = "http://i.imgur.com/TrFyFNV.jpg"
-    $scope.caption = "";
-    $scope.room = "";
-    $scope.pushData = function() {
-      var ref = database.ref().child('location/' + $scope.curr_loc + '/content');
-      ref.push([$scope.imageurl, $scope.caption, $scope.room]);
-    }
-
-
-
-    $scope.showPost = function() {
-
-      $scope.show_val = !$scope.show_val;
-      window.scrollTo(0, 0);
+      return loc;
 
     };
+
+    supersonic.logger.log('why');
+
+    $scope.curr_loc_post = getAllData();
+
 
     getPosition();
     getAllData();

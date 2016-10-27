@@ -99,6 +99,7 @@ angular
     $scope.pushData = function() {
       var ref = database.ref().child('location/' + $scope.curr_loc + '/content');
       ref.push([$scope.imageurl, $scope.caption, $scope.room]);
+      $scope.show_val = false;
     }
 
 

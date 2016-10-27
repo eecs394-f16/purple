@@ -1,7 +1,7 @@
 <div ng-controller="IndexController">
 
   <super-navbar>
-    <super-navbar-title id = "super">
+    <super-navbar-title>
     	Location Index
     </super-navbar-title>
   </super-navbar>
@@ -42,9 +42,7 @@
   </style>
 
   <body>
-  <div class="map-wrapper">
     <div id="map"></div>
-    </div>
   </body>
 
     <script>
@@ -115,7 +113,7 @@
 
         }
 
-        document.getElementById('map').style.height = window.innerHeight - 60  + 'px';
+        document.getElementById('map').style.height = window.innerHeight - 30 + 'px';
 
       </script>
       <script async defer

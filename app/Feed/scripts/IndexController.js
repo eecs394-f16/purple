@@ -93,7 +93,7 @@ angular
 
 
 
-    $scope.imageurl = "http://i.imgur.com/TrFyFNV.jpg"
+    $scope.imageurl = ""
     $scope.caption = "";
     $scope.room = "";
     $scope.pushData = function() {

@@ -100,7 +100,13 @@ angular
     $scope.room = "";
     $scope.pushData = function() {
       var ref = database.ref().child('location/' + $scope.curr_loc + '/content');
-      ref.push([$scope.imageurl, $scope.caption, $scope.room, Date.now()]);
+      ref.push({
+        0: $scope.imageurl,
+        1: $scope.caption,
+        2: $scope.room,
+        timestamp: Date.now()
+      });
+
       $scope.show_val = false;
     }
 

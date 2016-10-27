@@ -87,6 +87,8 @@ angular
 
         $scope.curr_loc = content[0];
         $scope.contents = content[1];
+        supersonic.logger.log("adjflka;sdf");
+        supersonic.logger.log($scope.contents);
       });
 
     };
@@ -98,7 +100,7 @@ angular
     $scope.room = "";
     $scope.pushData = function() {
       var ref = database.ref().child('location/' + $scope.curr_loc + '/content');
-      ref.push([$scope.imageurl, $scope.caption, $scope.room]);
+      ref.push([$scope.imageurl, $scope.caption, $scope.room, Date.now()]);
       $scope.show_val = false;
     }
 

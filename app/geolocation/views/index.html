@@ -1,7 +1,7 @@
 <div ng-controller="IndexController">
 
   <super-navbar>
-    <super-navbar-title>
+    <super-navbar-title id = "super">
     	Location Index
     </super-navbar-title>
   </super-navbar>
@@ -33,10 +33,19 @@
   </div-->
   <style>
 
+  body{
+    position: relative;
+  }
+
+
+
   </style>
 
+  <body>
   <div class="map-wrapper">
     <div id="map"></div>
+    </div>
+  </body>
 
     <script>
         function initMap() {
@@ -105,6 +114,9 @@
          }
 
         }
+
+        document.getElementById('map').style.height = window.innerHeight - 60  + 'px';
+
       </script>
       <script async defer
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKTwojDE_YY3QlWqhvzStWfqY4m97oP0s&callback=initMap">

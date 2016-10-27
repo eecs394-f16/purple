@@ -1,9 +1,3 @@
-//debugging wrapper
-var logVar = function(x, name) {
-    var string =  name + ': ' + x;
-    supersonic.logger.log(string);
-};
-
 //location finding functions
 var distance = function(lat1, lon1, lat2, lon2) {
   var R = 6371e3; // radius of Earth, meters
@@ -108,6 +102,10 @@ angular
       });
 
       $scope.show_val = false;
+
+      $scope.imageurl = "";
+      $scope.caption = "";
+      $scope.room = "";
     }
 
 
